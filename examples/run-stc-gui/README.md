@@ -12,7 +12,9 @@ No provider.
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| stc\_windows\_pw | Specify the windows password with a TF\_VAR\_stc\_windows\_pw environment variable | `string` | n/a | yes |
 
 ## Outputs
 

@@ -83,7 +83,7 @@ resource "azurerm_windows_virtual_machine" "stc_gui" {
   location              = var.resource_group_location
   size                  = var.instance_size
   admin_username        = var.admin_username
-  admin_password        = var.admin_password
+  admin_password        = var.stc_windows_pw
   network_interface_ids = ["${element(azurerm_network_interface.mgmt.*.id, count.index)}"]
 
   os_disk {
@@ -124,8 +124,8 @@ resource "null_resource" "provisioner" {
   connection {
     host        = "${element(azurerm_windows_virtual_machine.stc_gui.*.public_ip_address, count.index)}"
     type        = "ssh"
-    user        = "adminuser"
-    password    = var.admin_password
+    user        = var.admin_username
+    password    = var.stc_windows_pw
     # work around terraform bug #25634 windows server 2019 ssh server
     script_path = "/Windows/Temp/terraform_%RAND%.bat"
   }
