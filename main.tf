@@ -136,9 +136,9 @@ resource "null_resource" "provisioner" {
     destination = "${var.dest_dir}/install-testcenter.ps1"
   }
 
-  # copy platform files
+  # copy Spirent TestCenter installer
   provisioner "file" {
-    source      = var.src_dir
+    source      = var.stc_installer
     destination = "${var.dest_dir}/install-files"
   }
 

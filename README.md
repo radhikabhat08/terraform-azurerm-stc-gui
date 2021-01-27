@@ -4,7 +4,7 @@ Run a Windows Server instance and install the Windows Spirent TestCenter applica
 After the instance has been started connect using Remote Desktop to use Spirent TestCenter. 
 
 Please obtain a copy of the Windows Spirent TestCenter Application from http://support.spirent.com
-and place it in a directory with files copied to the instances.  Be sure to update the src_dir variable to point to this directory.
+and place it in a directory with files copied to the instances.  Be sure to update the src_installer variable to point to this directory.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -35,7 +35,7 @@ and place it in a directory with files copied to the instances.  Be sure to upda
 | mgmt\_plane\_subnet\_id | Management public Azure subnet ID. | `string` | `""` | no |
 | resource\_group\_location | Resource group location in Azure. | `string` | `"West US"` | no |
 | resource\_group\_name | Resource group name in Azure. | `string` | `"default"` | no |
-| src\_dir | Source directory containing 'Spirent TestCenter Application.exe'.  This directory will be copied to each instance. | `string` | n/a | yes |
+| src\_installer | File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer. | `string` | n/a | yes |
 | stc\_windows\_pw | Specify the windows password with a TF\_VAR\_stc\_windows\_pw environment variable. | `string` | n/a | yes |
 | virtual\_network | Azure virtual network name. | `string` | `""` | no |
 

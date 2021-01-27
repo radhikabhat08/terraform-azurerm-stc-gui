@@ -59,8 +59,8 @@ variable "dest_dir" {
   default     = "c:/users/adminuser/downloads"
 }
 
-variable "src_dir" {
-  description = "Source directory containing 'Spirent TestCenter Application.exe'.  This directory will be copied to each instance."
+variable "stc_installer" {
+  description = "File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer."
   type        = string
 }
 
