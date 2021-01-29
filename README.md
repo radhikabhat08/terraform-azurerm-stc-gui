@@ -4,7 +4,7 @@ Run a Windows Server instance and install the Windows Spirent TestCenter applica
 After the instance has been started connect using Remote Desktop to use Spirent TestCenter. 
 
 Please obtain a copy of the Windows Spirent TestCenter Application from http://support.spirent.com
-and place it in a directory with files copied to the instances.  Be sure to update the src_dir variable to point to this directory.
+and place it in a directory with files copied to the instances.  Be sure to update the stc_installer variable to point to this directory.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
