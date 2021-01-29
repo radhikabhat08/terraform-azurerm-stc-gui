@@ -35,7 +35,7 @@ and place it in a directory with files copied to the instances.  Be sure to upda
 | mgmt\_plane\_subnet\_id | Management public Azure subnet ID. | `string` | `""` | no |
 | resource\_group\_location | Resource group location in Azure. | `string` | `"West US"` | no |
 | resource\_group\_name | Resource group name in Azure. | `string` | `"default"` | no |
-| src\_dir | Source directory containing 'Spirent TestCenter Application.exe'.  This directory will be copied to each instance. | `string` | n/a | yes |
+| stc\_installer | File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer. | `string` | n/a | yes |
 | stc\_windows\_pw | Specify the windows password with a TF\_VAR\_stc\_windows\_pw environment variable. | `string` | n/a | yes |
 | virtual\_network | Azure virtual network name. | `string` | `""` | no |
 

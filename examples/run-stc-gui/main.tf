@@ -20,7 +20,7 @@ module "stc_gui" {
   resource_group_location   = "West US 2"
   virtual_network           = "STCv"
   ingress_cidr_blocks       = "0.0.0.0/0"
-  src_dir                   = "../../install-files"
+  stc_installer             = "../../install-files"
   mgmt_plane_subnet_id      = data.azurerm_subnet.mgmt_plane.id
 }
 
