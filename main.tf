@@ -17,7 +17,7 @@ resource "azurerm_network_security_group" "stc_gui" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = 3389
-    source_address_prefixes    = "*"
+    source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
 
@@ -65,13 +65,13 @@ resource "azurerm_network_interface" "mgmt" {
     name                          = "ipc-mgmt-${var.instance_name}-${count.index}"
     subnet_id                     = var.mgmt_plane_subnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = "${element(azurerm_public_ip.stc_gui.*.id, count.index)}"
+    public_ip_address_id          = element(azurerm_public_ip.stc_gui.*.id, count.index)
   }
 }
 
 resource "azurerm_network_interface_security_group_association" "mgmt" {
   count                     = var.instance_count
-  network_interface_id      = "${element(azurerm_network_interface.mgmt.*.id, count.index)}"
+  network_interface_id      = element(azurerm_network_interface.mgmt.*.id, count.index)
   network_security_group_id = azurerm_network_security_group.stc_gui.id
 }
 
@@ -84,7 +84,7 @@ resource "azurerm_windows_virtual_machine" "stc_gui" {
   size                  = var.instance_size
   admin_username        = var.admin_username
   admin_password        = var.stc_windows_pw
-  network_interface_ids = ["${element(azurerm_network_interface.mgmt.*.id, count.index)}"]
+  network_interface_ids = [element(azurerm_network_interface.mgmt.*.id, count.index)]
 
   os_disk {
     caching              = "ReadWrite"
@@ -100,13 +100,13 @@ resource "azurerm_windows_virtual_machine" "stc_gui" {
 }
 
 data "template_file" "tf" {
-    template = "${file("${path.module}/install-openssh.ps1")}"
+    template = file("${path.module}/install-openssh.ps1")
 }
 
 resource "azurerm_virtual_machine_extension" "openssh-extension" {
   count                 = var.instance_count
   name                 = "extension-${var.instance_name}-${count.index}"
-  virtual_machine_id   = "${element(azurerm_windows_virtual_machine.stc_gui.*.id, count.index)}"
+  virtual_machine_id   = element(azurerm_windows_virtual_machine.stc_gui.*.id, count.index)
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
   type_handler_version = "1.9"
@@ -122,7 +122,7 @@ resource "azurerm_virtual_machine_extension" "openssh-extension" {
 resource "null_resource" "provisioner" {
   count = var.enable_provisioner ? var.instance_count : 0
   connection {
-    host        = "${element(azurerm_windows_virtual_machine.stc_gui.*.public_ip_address, count.index)}"
+    host        = element(azurerm_windows_virtual_machine.stc_gui.*.public_ip_address, count.index)
     type        = "ssh"
     user        = var.admin_username
     password    = var.stc_windows_pw
@@ -145,7 +145,7 @@ resource "null_resource" "provisioner" {
   # run install
   provisioner "remote-exec" {
     inline = [
-      "powershell -File \"${var.dest_dir}/install-testcenter.ps1\" -dir \"${var.dest_dir}/install-files\" -download 1",
+      "powershell -File \"${var.dest_dir}/install-testcenter.ps1\" -Dir \"${var.dest_dir}/install-files\" -ExtraDownload 1",
     ]
   }
 }

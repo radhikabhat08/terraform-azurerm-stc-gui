@@ -36,12 +36,6 @@ variable "resource_group_location" {
   default     = "West US"
 }
 
-variable "virtual_network" {
-  description = "Azure virtual network name."
-  type        = string
-  default     = ""
-}
-
 variable "mgmt_plane_subnet_id" {
   description = "Management public Azure subnet ID."
   type        = string
@@ -62,14 +56,6 @@ variable "dest_dir" {
 variable "stc_installer" {
   description = "File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer."
   type        = string
-
-  validation {
-    condition = (
-      can(regex("Spirent TestCenter Application( x64|)\\.exe", basename(var.stc_installer)))
-    )
-    error_message = "Spirent TestCenter Application x64.exe or Spirent TestCenter Application.exe must be specified in the path."
-  }
-
 }
 
 variable "enable_provisioner" {

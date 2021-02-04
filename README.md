@@ -37,7 +37,6 @@ and place it in a directory with files copied to the instances.  Be sure to upda
 | resource\_group\_name | Resource group name in Azure. | `string` | `"default"` | no |
 | stc\_installer | File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer. | `string` | n/a | yes |
 | stc\_windows\_pw | Specify the windows password with a TF\_VAR\_stc\_windows\_pw environment variable. | `string` | n/a | yes |
-| virtual\_network | Azure virtual network name. | `string` | `""` | no |
 
 ## Outputs
 
