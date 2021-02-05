@@ -7,18 +7,20 @@ provider "azurerm" {
 }
 
 data "azurerm_subnet" "mgmt_plane" {
-  name                 = "mgmt-westus2"
-  virtual_network_name = "STCv"
-  resource_group_name  = "default"
+  name                 = var.mgmt_subnet_name
+  virtual_network_name = var.virtual_network_name
+  resource_group_name  = var.resource_group_name
 }
 
 module "stc_gui" {
   source                    = "../.."
-  instance_count            = 1
-  marketplace_version       = "latest"
-  resource_group_location   = "West US 2"
-  ingress_cidr_blocks       = ["0.0.0.0/0"]
-  stc_installer             = "../../../stcv-Ninstances/install-files"
+  instance_count            = var.instance_count
+  instance_size             = var.instance_size
+  resource_group_name       = var.resource_group_name
+  marketplace_version       = var.marketplace_version
+  resource_group_location   = var.resource_group_location
+  ingress_cidr_blocks       = var.ingress_cidr_blocks
+  stc_installer             = var.stc_installer
   mgmt_plane_subnet_id      = data.azurerm_subnet.mgmt_plane.id
   stc_windows_pw            = var.stc_windows_pw
 }
