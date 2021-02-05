@@ -45,20 +45,7 @@ variable "instance_size" {
   default     = "Standard_DS1_v2"
 }
 
-variable "ingress_cidr_blocks" {
-  description = "List of management interface ingress IPv4/IPv6 CIDR ranges."
-  type        = list(string)
-  default     = ["0.0.0.0/0"]
-}
-
 variable "stc_installer" {
   description = "File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer."
-  type        = string
-  default     = "../../../stcv-Ninstances/install-files/Spirent TestCenter Application.exe" 
-  validation {
-    condition = (
-      can(regex("Spirent TestCenter Application( x64|)\\.exe", basename(var.stc_installer)))
-    )
-    error_message = "Spirent TestCenter Application x64.exe or Spirent TestCenter Application.exe must be specified in the path."
-  }
+  default     = "../../Spirent TestCenter Application.exe"
 }

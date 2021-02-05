@@ -19,7 +19,10 @@ module "stc_gui" {
   resource_group_name       = var.resource_group_name
   marketplace_version       = var.marketplace_version
   resource_group_location   = var.resource_group_location
-  ingress_cidr_blocks       = var.ingress_cidr_blocks
+
+  # Warning: Using all address cidr block to simplify the example. You should limit instance access.
+  ingress_cidr_blocks       = ["0.0.0.0/0"]
+
   stc_installer             = var.stc_installer
   mgmt_plane_subnet_id      = data.azurerm_subnet.mgmt_plane.id
   stc_windows_pw            = var.stc_windows_pw
@@ -28,3 +31,4 @@ module "stc_gui" {
 output "instance_public_ips" {
   value = module.stc_gui.*.instance_public_ips
 }
+

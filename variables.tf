@@ -3,11 +3,13 @@
 variable "instance_count" {
   description = "Number of instances to create."
   type        = number
+  default     = 1
 }
 
 variable "instance_size" {
   description = "The Azure Virtual Machine SKU."
   type        = string
+  default     = "Standard_DS1_v2"
 }
 
 variable "instance_name" {
@@ -19,18 +21,18 @@ variable "instance_name" {
 variable "marketplace_version" {
   description = "Version of the Windows server image."
   type        = string
+  default     = "latest"
 }
 
 variable "resource_group_name" {
   description = "Resource group name in Azure."
   type        = string
-  default     = ""
 }
 
 variable "resource_group_location" {
   description = "Resource group location in Azure."
   type        = string
-  default     = ""
+  default     = "West US 2"
 }
 
 variable "mgmt_plane_subnet_id" {

@@ -20,8 +20,6 @@ Be sure to update the stc_installer variable to point to this file.
 | Name | Version |
 |------|---------|
 | azurerm | >=2.37.0 |
-| null | n/a |
-| template | n/a |
 
 ## Inputs
 
@@ -31,13 +29,13 @@ Be sure to update the stc_installer variable to point to this file.
 | dest\_dir | Destination directory on the instance where files will be copied. | `string` | `"c:/users/adminuser/downloads"` | no |
 | enable\_provisioner | Enable provisioning. | `bool` | `true` | no |
 | ingress\_cidr\_blocks | List of management interface ingress IPv4/IPv6 CIDR ranges. | `list(string)` | n/a | yes |
-| instance\_count | Number of instances to create. | `number` | n/a | yes |
+| instance\_count | Number of instances to create. | `number` | `1` | no |
 | instance\_name | Name assigned to the Windows STC GUI instance.  An instance number will be appended to the name. | `string` | `"stcgui"` | no |
-| instance\_size | The Azure Virtual Machine SKU. | `string` | n/a | yes |
-| marketplace\_version | Version of the Windows server image. | `string` | n/a | yes |
+| instance\_size | The Azure Virtual Machine SKU. | `string` | `"Standard_DS1_v2"` | no |
+| marketplace\_version | Version of the Windows server image. | `string` | `"latest"` | no |
 | mgmt\_plane\_subnet\_id | Management public Azure subnet ID. | `string` | `""` | no |
-| resource\_group\_location | Resource group location in Azure. | `string` | `""` | no |
-| resource\_group\_name | Resource group name in Azure. | `string` | `""` | no |
+| resource\_group\_location | Resource group location in Azure. | `string` | `"West US 2"` | no |
+| resource\_group\_name | Resource group name in Azure. | `string` | n/a | yes |
 | stc\_installer | File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer. | `string` | n/a | yes |
 | stc\_windows\_pw | Specify the windows password with a TF\_VAR\_stc\_windows\_pw environment variable | `string` | n/a | yes |
 

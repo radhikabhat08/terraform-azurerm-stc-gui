@@ -19,14 +19,13 @@ Run a Windows Server 2019 instance and install the Spirent TestCenter Applicatio
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ingress\_cidr\_blocks | List of management interface ingress IPv4/IPv6 CIDR ranges. | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | instance\_count | Number of instances to create. | `number` | `1` | no |
 | instance\_size | The Azure Virtual Machine SKU. | `string` | `"Standard_DS1_v2"` | no |
 | marketplace\_version | Version of the Windows server image. | `string` | `"latest"` | no |
 | mgmt\_subnet\_name | Management subnet name. | `string` | `"mgmt-westus2"` | no |
 | resource\_group\_location | Resource group location in Azure. | `string` | `"West US 2"` | no |
 | resource\_group\_name | Resource group name in Azure. | `string` | `"default"` | no |
-| stc\_installer | File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer. | `string` | `"../../../stcv-Ninstances/install-files/Spirent TestCenter Application.exe"` | no |
+| stc\_installer | File path to 'Spirent TestCenter Application x64.exe' or 'Spirent TestCenter Application.exe' installer. | `string` | `"../../Spirent TestCenter Application x64.exe"` | no |
 | stc\_windows\_pw | Specify the windows password with a TF\_VAR\_stc\_windows\_pw environment variable | `string` | n/a | yes |
 | virtual\_network\_name | Virtual Network name in Azure. | `string` | `"STCv"` | no |
 
